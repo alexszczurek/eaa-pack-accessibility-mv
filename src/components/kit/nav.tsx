@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-html-link-for-pages -- kit components stay framework-agnostic: plain <a>, no next/link */
 /**
  * kit: nav
  * Header navigation as a proper landmark. The mobile toggle reports its state

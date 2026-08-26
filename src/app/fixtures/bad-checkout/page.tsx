@@ -94,8 +94,8 @@ export default function BadCheckoutFixture() {
 
           <aside className="space-y-4">
             <div className="rounded-xl border border-zinc-200 p-4">
-              {/* Image without alt text (image-alt) */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+              {/* Image without alt text (image-alt) — intentional fixture failure */}
+              {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
               <img
                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='140'%3E%3Crect width='240' height='140' fill='%23e4e4e7'/%3E%3C/svg%3E"
                 width={240}

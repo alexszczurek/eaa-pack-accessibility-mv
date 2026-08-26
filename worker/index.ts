@@ -20,7 +20,7 @@ const MAX_NODES_PER_RULE = 50;
 
 const IMPACTS = ["critical", "serious", "moderate", "minor"] as const;
 
-interface ClaimedScan {
+interface ClaimedScan extends Record<string, unknown> {
   id: string;
   site_id: string;
   url: string;
