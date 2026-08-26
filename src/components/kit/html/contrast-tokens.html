@@ -1,0 +1,32 @@
+<!-- kit: contrast-tokens (plain HTML twin)
+     Every pair holds at least 4.5:1. Do not lighten the muted tones.
+       text   #18181b on #ffffff -> 16.7:1
+       muted  #52525c on #ffffff ->  7.1:1
+       danger #b91c1c on #ffffff ->  6.3:1
+       link   #1d4ed8 on #ffffff ->  6.4:1
+       white  #ffffff on #18181b -> 16.7:1 -->
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f4f4f5;
+    --text: #18181b;
+    --muted: #52525c;
+    --danger: #b91c1c;
+    --link: #1d4ed8;
+    --brand: #18181b;
+    --brand-text: #ffffff;
+  }
+  .demo { background: var(--bg); color: var(--text); border: 1px solid #e4e4e7; border-radius: 0.75rem; padding: 1.25rem; font: 0.875rem/1.5 system-ui, sans-serif; max-width: 28rem; }
+  .demo .muted { color: var(--muted); }
+  .demo .danger { color: var(--danger); }
+  .demo a { color: var(--link); text-decoration: underline; text-underline-offset: 4px; }
+  .demo .btn { background: var(--brand); color: var(--brand-text); border: 0; border-radius: 0.5rem; padding: 0.5rem 1rem; font: 500 0.875rem/1 system-ui, sans-serif; cursor: pointer; }
+</style>
+
+<div class="demo">
+  <p><strong>Primary text — always readable</strong></p>
+  <p class="muted">Muted text for hints and captions. Still 7.1:1, still readable.</p>
+  <p class="danger">This price changed since you added it.</p>
+  <p>Body text with <a href="#">a link you can actually spot</a> without guessing by color.</p>
+  <button class="btn" type="button">Continue to payment</button>
+</div>

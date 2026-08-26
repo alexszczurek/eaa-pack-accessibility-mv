@@ -1,0 +1,43 @@
+<!-- kit: focus-ring (plain HTML twin)
+     Visible keyboard focus + button/link with an accessible name.
+     Icon-only buttons MUST carry aria-label. -->
+<style>
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 2.5rem;
+    padding: 0 1rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background: #18181b;
+    color: #fff;
+    font: 500 0.875rem/1 system-ui, sans-serif;
+    cursor: pointer;
+  }
+  .btn:hover { background: #3f3f46; }
+  .link {
+    color: #1d4ed8;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: #93c5fd;
+  }
+  .link:hover { color: #1e3a8a; text-decoration-color: currentColor; }
+</style>
+
+<button class="btn" type="button">Save changes</button>
+
+<!-- Icon-only button: the aria-label IS the accessible name -->
+<button class="btn" type="button" aria-label="Close cart">
+  <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14">
+    <path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  </svg>
+</button>
+
+<a class="link" href="/returns">Read our returns policy</a>

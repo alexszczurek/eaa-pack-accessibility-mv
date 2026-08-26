@@ -1,0 +1,47 @@
+<!-- kit: checkbox-radio (plain HTML twin)
+     24px hit target; the whole label row is clickable. -->
+<style>
+  .check-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.25rem;
+    margin: -0.25rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font: 0.875rem/1.5rem system-ui, sans-serif;
+    max-width: 26rem;
+  }
+  .check-row:hover { background: #fafafa; }
+  .check-row input {
+    width: 24px;
+    height: 24px;
+    margin: 1px 0 0;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: #1d4ed8;
+  }
+  .check-row input:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+  .check-row .title { font-weight: 500; color: #18181b; }
+  .check-row .hint { display: block; color: #52525c; }
+</style>
+
+<label class="check-row" for="newsletter">
+  <input id="newsletter" name="newsletter" type="checkbox" />
+  <span>
+    <span class="title">Email me order updates</span>
+    <span class="hint">A shipping confirmation and a delivery notice. Nothing else.</span>
+  </span>
+</label>
+
+<fieldset style="border:0;padding:0;margin:1rem 0 0">
+  <legend style="font:500 0.875rem system-ui,sans-serif;padding:0 0 0.5rem">Shipping speed</legend>
+  <label class="check-row" for="ship-std">
+    <input id="ship-std" name="shipping" type="radio" value="standard" checked />
+    <span><span class="title">Standard — free</span></span>
+  </label>
+  <label class="check-row" for="ship-exp">
+    <input id="ship-exp" name="shipping" type="radio" value="express" />
+    <span><span class="title">Express — 9,99 €</span></span>
+  </label>
+</fieldset>

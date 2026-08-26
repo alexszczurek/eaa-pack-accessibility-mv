@@ -1,0 +1,36 @@
+<!-- kit: dialog (plain HTML twin)
+     Uses the native <dialog> element: focus trap, Esc, and focus restore
+     come for free with showModal(). Named via aria-labelledby. -->
+<style>
+  .kit-dialog {
+    width: min(28rem, calc(100vw - 2rem));
+    border: 1px solid #e4e4e7;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    font: 0.875rem/1.5 system-ui, sans-serif;
+    color: #3f3f46;
+  }
+  .kit-dialog::backdrop { background: rgb(9 9 11 / 0.4); }
+  .kit-dialog h2 { margin: 0 0 0.75rem; font-size: 1rem; color: #18181b; }
+  .kit-dialog .actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.25rem; }
+  .kit-dialog button {
+    height: 2.25rem; padding: 0 0.875rem; border-radius: 0.5rem;
+    font: 500 0.875rem/1 system-ui, sans-serif; cursor: pointer;
+  }
+  .kit-dialog .primary { background: #18181b; color: #fff; border: 0; }
+  .kit-dialog .ghost { background: #fff; color: #18181b; border: 1px solid #d4d4d8; }
+  .kit-dialog button:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+</style>
+
+<button type="button" onclick="document.getElementById('remove-dialog').showModal()">
+  Remove item
+</button>
+
+<dialog id="remove-dialog" class="kit-dialog" aria-labelledby="remove-dialog-title">
+  <h2 id="remove-dialog-title">Remove item from cart?</h2>
+  <p>You can add it back later.</p>
+  <div class="actions">
+    <button type="button" class="ghost" onclick="this.closest('dialog').close()">Keep it</button>
+    <button type="button" class="primary" onclick="this.closest('dialog').close()">Remove</button>
+  </div>
+</dialog>
