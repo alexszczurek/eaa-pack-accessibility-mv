@@ -1,4 +1,4 @@
-import { chromium, type Browser } from "playwright";
+import { chromium as playwrightCore, type Browser } from "playwright-core";
 import { AxeBuilder } from "@axe-core/playwright";
 
 export interface AxeNodeResult {
@@ -50,7 +50,17 @@ let sharedBrowser: Browser | null = null;
 
 async function getBrowser(): Promise<Browser> {
   if (!sharedBrowser || !sharedBrowser.isConnected()) {
-    sharedBrowser = await chromium.launch({ headless: true });
+    if (process.env.VERCEL) {
+      const chromium = await import("@sparticuz/chromium");
+      const executablePath = await chromium.default.executablePath();
+      sharedBrowser = await playwrightCore.launch({
+        args: chromium.default.args,
+        executablePath,
+        headless: true,
+      });
+    } else {
+      sharedBrowser = await playwrightCore.launch({ headless: true });
+    }
   }
   return sharedBrowser;
 }
@@ -125,7 +135,6 @@ export async function runScan(url: string): Promise<ScanResult> {
       finalUrl: page.url(),
     };
   } finally {
-    // Fresh context per scan; closing it discards all target cookies/storage.
     await context.close().catch(() => {});
   }
 }

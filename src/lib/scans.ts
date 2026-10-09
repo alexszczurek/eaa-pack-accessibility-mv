@@ -1,5 +1,6 @@
 import "server-only";
 import { createHash } from "crypto";
+import { after } from "next/server";
 import { query, queryOne } from "./db";
 import { validateScanUrl, ScanUrlError } from "./ssrf";
 
@@ -113,6 +114,19 @@ export async function enqueueScan(args: EnqueueArgs): Promise<string> {
     `insert into scans (site_id, requested_by, ip_hash) values ($1, $2, $3) returning id`,
     [siteId, args.userId ?? null, ipHash]
   );
+
+  after(async () => {
+    try {
+      const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4780";
+      await fetch(`${baseUrl}/api/scans/run`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+    } catch (err) {
+      console.error("[enqueueScan] Failed to trigger scan run:", err);
+    }
+  });
+
   return scan!.id;
 }
 
