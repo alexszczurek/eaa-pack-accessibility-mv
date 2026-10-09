@@ -10,7 +10,7 @@ export function getPool(): Pool {
     if (!connectionString) {
       throw new Error("DATABASE_URL is not set. Copy .env.example to .env and configure it.");
     }
-    global.__eaaPool = new Pool({ connectionString, max: 10 });
+    global.__eaaPool = new Pool({ connectionString, max: 1 });
   }
   return global.__eaaPool;
 }

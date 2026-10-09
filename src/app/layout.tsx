@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "Paste a URL, get a readable accessibility report mapped to copy-paste UI components, and draft an accessibility statement in PL and EN.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
       <body className="flex min-h-full flex-col">{children}</body>
